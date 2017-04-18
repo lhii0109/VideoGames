@@ -1,0 +1,71 @@
+---
+title: "Video Games"
+author: "Lawrence Hii"
+date: "April 25, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background
+Video games has been well known and gain strong popularity back in 2010. The video games refer to any electronic games that involve the interaction between human and a machine or we call console here. Up to date, we have more than 30 types of consoles or platforms being used. Some are phasing out while some are gaining momentum among video games players including teenagers and also adults. Apparently, I have not find a good site that shows an interactive graphics on the video games. I think this is a good time to incorporate skills that I learned from Stat 585x to make a shiny app that showcases analysis on video games.
+
+## Data
+The data of this project are from the VGChartz website here is the [link](http://www.vgchartz.com). Here is an excerpt from their website. "Founded in 2005 by Brett Walton, VGChartz (Video Game Charts) is a business intelligence and research firm and publisher of the VGChartz.com websites."[^1]
+
+[^1]: Quote from http://www.vgchartz.com/about.php
+
+VGChartz collects and estimates the data from games to consoles around the world. I will scrape the data from the website using `library(rvest)`. 
+
+###WebScrapping
+For the following analysis, I will use top 10000 games sales as my data. All sales are reported in millions and 2 decimal places. It's hard to see the difference for low revenue games sales as they are shown mostly close to zero. Below is the `R` code.
+
+```{r scraping, eval=FALSE}
+library(rvest)
+library(tidyverse)
+
+url <- "http://www.vgchartz.com/gamedb/?name=&publisher=&platform=&genre=&minSales=0&results=10000"
+html<- read_html(url)
+#import and remove duplicated columns eg NA, EU, JPN, ..
+rawdata_mat <- matrix(html %>% html_nodes("th , .chart td , .chart center") %>% html_text(),ncol=16,byrow = T)[,-c(8,10,12,14,16)]
+
+data<-rawdata_mat[-c(1,nrow(rawdata_mat)),] #remove the last "Total" row
+
+data_df<- data.frame(data)
+colnames(data_df)<- rawdata_mat[1,] #Creating Header
+
+#Update all columns types
+data_df$Pos<-as.numeric(as.character(data_df$Pos))
+data_df$Year<-as.numeric(as.character(data_df$Year))
+data_df$`North America`<-as.numeric(as.character(data_df$`North America`))
+data_df$Europe<-as.numeric(as.character(data_df$Europe))
+data_df$Japan<-as.numeric(as.character(data_df$Japan))
+data_df$`Rest of World`<-as.numeric(as.character(data_df$`Rest of World`))
+data_df$Global<-as.numeric(as.character(data_df$Global))
+
+```
+
+
+##Introducing Shiny App
+With the scrapped data, we can use `R` software along with `ggplot2` and `Plotly` packages to create different plots. Going deeper, both tools are great but lack of interactive components towards user. I decided to use `Shiny` app to put all graphs together. In `Shiny` app, there are four tabs which can be breakdown into the following
+
+1. Region
+2. Platform
+3. Genre
+4. It's Game Time!
+
+###Region
+This is the region analysis. The regions that we are analyzing including North America, Europe, Japan and Global which is the total sales of all regions. As you can see below that 
+
+***Insert snippet
+
+
+###Platform
+
+###Genre
+
+###It's Game Time!
+
+##Future Improvements

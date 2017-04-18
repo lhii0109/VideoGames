@@ -18,6 +18,5 @@ data_df$Europe<-as.numeric(as.character(data_df$Europe))
 data_df$Japan<-as.numeric(as.character(data_df$Japan))
 data_df$`Rest of World`<-as.numeric(as.character(data_df$`Rest of World`))
 data_df$Global<-as.numeric(as.character(data_df$Global))
-data_df$Year
 
 saveRDS(data_df,"vg.rds")
