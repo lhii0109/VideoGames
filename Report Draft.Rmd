@@ -10,17 +10,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Background
-Video games has been well known and gain strong popularity back in 2010. The video games refer to any electronic games that involve the interaction between human and a machine or we call console here. Up to date, we have more than 30 types of consoles or platforms being used. Some are phasing out while some are gaining momentum among video games players including teenagers and also adults. Apparently, I have not find a good site that shows an interactive graphics on the video games. I think this is a good time to incorporate skills that I learned from Stat 585x to make a shiny app that showcases analysis on video games.
+The video games refer to any electronic games that involve the interaction between human and a machine or we call console here. Up to date, we have more than 30 types of consoles or platforms being used. Some are phasing out while some are gaining momentum among video games players including teenagers and also adults. Apparently, I have not find a good site that shows an interactive graphics on the video games. I think this is a good time to incorporate skills that I learned from Stat 585x to make a shiny app that showcases analysis on video games.
 
 ## Data
-The data of this project are from the VGChartz website here is the [link](http://www.vgchartz.com). Here is an excerpt from their website. "Founded in 2005 by Brett Walton, VGChartz (Video Game Charts) is a business intelligence and research firm and publisher of the VGChartz.com websites."[^1]
+The data is scrapped from the VGChartz website. Here is the [link](http://www.vgchartz.com). Here is an excerpt from their website describing VGChartz. "Founded in 2005 by Brett Walton, VGChartz (Video Game Charts) is a business intelligence and research firm and publisher of the VGChartz.com websites."[^1] VGChartz collects and estimates the data from games to consoles around the world. I will scrape the data from the website using `library(rvest)`. 
 
 [^1]: Quote from http://www.vgchartz.com/about.php
 
-VGChartz collects and estimates the data from games to consoles around the world. I will scrape the data from the website using `library(rvest)`. 
+
 
 ###WebScrapping
-For the following analysis, I will use top 10000 games sales as my data. All sales are reported in millions and 2 decimal places. It's hard to see the difference for low revenue games sales as they are shown mostly close to zero. Below is the `R` code.
+I scrapped top 10000 global games sales from VGChartz website. All sales are reported in millions and rounded to 2 decimal places. With that, it will be hard to see the difference for low revenue games sales as they are shown mostly close to zero. Below is the `R` code.
 
 ```{r scraping, eval=FALSE}
 library(rvest)
@@ -51,21 +51,19 @@ data_df$Global<-as.numeric(as.character(data_df$Global))
 ##Introducing Shiny App
 With the scrapped data, we can use `R` software along with `ggplot2` and `Plotly` packages to create different plots. Going deeper, both tools are great but lack of interactive components towards user. I decided to use `Shiny` app to put all graphs together. In `Shiny` app, there are four tabs which can be breakdown into the following
 
-1. Region
-2. Platform
-3. Genre
-4. It's Game Time!
+1. Platforms
+2. Demographics
+3. Publishers
+4. Games
 
-###Region
-This is the region analysis. The regions that we are analyzing including North America, Europe, Japan and Global which is the total sales of all regions. As you can see below that 
-
-***Insert snippet
+###Platforms
 
 
-###Platform
+###Demographics
 
-###Genre
+###Publishers
 
-###It's Game Time!
+###Games
+
 
 ##Future Improvements

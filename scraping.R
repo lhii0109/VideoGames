@@ -1,5 +1,6 @@
 library(rvest)
 library(tidyverse)
+library(lubridate)
 
 url <- "http://www.vgchartz.com/gamedb/?name=&publisher=&platform=&genre=&minSales=0&results=10000"
 html<- read_html(url)

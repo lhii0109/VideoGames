@@ -126,12 +126,11 @@ $(document).ready(function () {
 
 <div id="background" class="section level2">
 <h2>Background</h2>
-<p>Video games has been well known and gain strong popularity back in 2010. The video games refer to any electronic games that involve the interaction between human and a machine or we call console here. Up to date, we have more than 30 types of consoles or platforms being used. Some are phasing out while some are gaining momentum among video games players including teenagers and also adults. Apparently, I have not find a good site that shows an interactive graphics on the video games. I think this is a good time to incorporate skills that I learned from Stat 585x to make a shiny app that showcases analysis on video games.</p>
+<p>The video games refer to any electronic games that involve the interaction between human and a machine or we call console here. Up to date, we have more than 30 types of consoles or platforms being used. Some are phasing out while some are gaining momentum among video games players including teenagers and also adults. Apparently, I have not find a good site that shows an interactive graphics on the video games. I think this is a good time to incorporate skills that I learned from Stat 585x to make a shiny app that showcases analysis on video games.</p>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<p>The data of this project are from the VGChartz website here is the <a href="http://www.vgchartz.com">link</a>. Here is an excerpt from their website. “Founded in 2005 by Brett Walton, VGChartz (Video Game Charts) is a business intelligence and research firm and publisher of the VGChartz.com websites.”<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
-<p>VGChartz collects and estimates the data from games to consoles around the world. I will scrape the data from the website using <code>library(rvest)</code>.</p>
+<p>The data is scrapped from the VGChartz website. Here is the <a href="http://www.vgchartz.com">link</a>. Here is an excerpt from their website describing VGChartz. “Founded in 2005 by Brett Walton, VGChartz (Video Game Charts) is a business intelligence and research firm and publisher of the VGChartz.com websites.”<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> VGChartz collects and estimates the data from games to consoles around the world. I will scrape the data from the website using <code>library(rvest)</code>.</p>
 <div id="webscrapping" class="section level3">
 <h3>WebScrapping</h3>
 <p>For the following analysis, I will use top 10000 games sales as my data. All sales are reported in millions and 2 decimal places. It’s hard to see the difference for low revenue games sales as they are shown mostly close to zero. Below is the <code>R</code> code.</p>
@@ -160,24 +159,29 @@ data_df$Global&lt;-as.numeric(as.character(data_df$Global))</code></pre>
 </div>
 <div id="introducing-shiny-app" class="section level2">
 <h2>Introducing Shiny App</h2>
-<p>With the scrapped data, we can use <code>R</code> software along with <code>ggplot2</code> and <code>Plotly</code> packages to create different plots. Going deeper, both tools are great but lack of interactive components towards user. I decided to use <code>Shiny</code> app to put all graphs together. In <code>Shiny</code> app, there are four tabs which can be breakdown into</p>
+<p>With the scrapped data, we can use <code>R</code> software along with <code>ggplot2</code> and <code>Plotly</code> packages to create different plots. Going deeper, both tools are great but lack of interactive components towards user. I decided to use <code>Shiny</code> app to put all graphs together. In <code>Shiny</code> app, there are four tabs which can be breakdown into the following</p>
 <ol style="list-style-type: decimal">
-<li>Platform</li>
-<li>Region</li>
-<li>Genre</li>
+<li>Platforms</li>
+<li>Demographics</li>
+<li>Publishers</li>
 <li>Games</li>
 </ol>
-<div id="platform" class="section level3">
-<h3>Platform</h3>
+<div id="platforms" class="section level3">
+<h3>Platforms</h3>
+<p>This is the region analysis. The regions that we are analyzing including North America, Europe, Japan and Global which is the total sales of all regions. As you can see below that</p>
+<p>***Insert snippet</p>
 </div>
-<div id="region" class="section level3">
-<h3>Region</h3>
+<div id="demographics" class="section level3">
+<h3>Demographics</h3>
 </div>
-<div id="genre" class="section level3">
-<h3>Genre</h3>
+<div id="publishers" class="section level3">
+<h3>Publishers</h3>
 </div>
 <div id="games" class="section level3">
 <h3>Games</h3>
+</div>
+<div id="its-game-time" class="section level3">
+<h3>It’s Game Time!</h3>
 </div>
 </div>
 <div id="future-improvements" class="section level2">
