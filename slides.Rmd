@@ -1,0 +1,24 @@
+---
+title: "Video Games Industry (Web scraping)"
+author: "Lawrence Hii"
+date: "April 25, 2017"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Outline
+
+- Web scraping
+
+- Platforms/Consoles
+
+- Demographics
+
+- Publishers
+
+- Games
+
+
